@@ -1,0 +1,15 @@
+{
+    "repo_name": "my-package",
+    "package_name": "my-package",
+    "author_name": "ISL",
+    "email": "dev@isl.co",
+    "description": "A short description of the project.",
+    "domain_name": "example.isl.codes",
+    "version": "0.1.0",
+    "timezone": "UTC",
+    "use_postgres": "n",
+    "use_redis": "n",
+    "use_express": "n",
+    "node_version": "4.2.1",
+    "npm_version": "3.3.3"
+}
