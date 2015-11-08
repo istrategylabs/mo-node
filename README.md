@@ -2,7 +2,6 @@
 
 A [cookiecutter](https://github.com/audreyr/cookiecutter) template for ISL Node projects.
 
-
 ## Starting a new project
 
 First, make sure you have [cookiecutter](https://github.com/audreyr/cookiecutter) installed. If you are using OS X, [Homebrew](http://brew.sh) can take care of that for you:

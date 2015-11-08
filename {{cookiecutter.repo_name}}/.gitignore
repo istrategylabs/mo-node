@@ -19,5 +19,6 @@ bower_components/
 bundle/
 bin/
 dist/
+public/
 docs/
 node_modules/
