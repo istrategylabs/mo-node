@@ -1,4 +1,4 @@
-# mo-django
+# mo-node
 
 A [cookiecutter](https://github.com/audreyr/cookiecutter) template for ISL Node projects.
 
