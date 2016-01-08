@@ -13,8 +13,8 @@ You are almost ready to run this barebones application, so let's make it happen.
 
 
 * Run `npm install` to install the default project dependencies
-* Run `createdatabase {{cookiecutter.package_name}}_local` to create the database
-* Run `createuser {{cookiecutter.package_name}}_local` to create the database user
+* Run `createdatabase {{cookiecutter.package_name}}` to create the database
+* Run `createuser {{cookiecutter.package_name}}` to create the database user
 * Start your app by running `foreman start`
 * Visit [http://localhost:3000](http://localhost:3000) and you should see an inspiring message, which indicates that your app is running.
 
