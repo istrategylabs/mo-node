@@ -2,20 +2,20 @@
   "name": "{{cookiecutter.package_name}}",
   "version": "{{cookiecutter.version}}",
   "description": "{{cookiecutter.project_name}} - {{cookiecutter.description}}",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
     "test": "node test/test.js",
-    "start": "node index.js"
+    "start": "node app/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/istrategylabs/{{cookiecutter.repo_name}}.git"
+    "url": "git+https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}.git"
   },
+  "author": "{{cookiecutter.authro_name}} <{{cookiecutter.email}}>",
+  "license": "{{cookiecutter.license}}",
   "dependencies": {
-    "async": "^1.4.2",
-    "bluebird": "^2.9.34",
     "cuid": "^1.2.5",
-    "karl": "^0.2.1"
+    "bunyan": "^1.5.1"
     {% if cookiecutter.use_redis == 'y' -%}
     ,"redis": "^2.3.0"
     {%- endif %}
@@ -23,10 +23,11 @@
     ,"express": "^4.13.3",
     "express-session": "^1.11.3",
     "body-parser": "^1.13.3",
-    "swig": "^1.4.2"
+    "nunjucks": "^2.2.0"
     {%- endif %}
     {% if cookiecutter.use_postgres == 'y' -%}
-    ,"bookshelf": "^0.8.1"
+    ,"pg": "^4.4.3",
+    "knex": "^0.9.0"
     {%- endif %}
   },
   "devDependencies": {
@@ -36,7 +37,5 @@
   "engines": {
     "npm": "^{{cookiecutter.npm_version}}",
     "node": "^{{cookiecutter.node_version}}"
-  },
-  "author": "{{cookiecutter.authro_name}} <{{cookiecutter.email}}>",
-  "license": "MIT"
+  }
 }

@@ -13,12 +13,12 @@
 *.env*
 *~
 
+*-docs/
 .bundle/
 .sass-cache/
-bower_components/
 bundle/
 bin/
 dist/
-public/
 docs/
+public/
 node_modules/

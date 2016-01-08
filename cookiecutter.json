@@ -1,11 +1,13 @@
 {
     "repo_name": "my-repo",
     "package_name": "my-package",
+    "github_username": "istrategylabs",
     "author_name": "ISL",
     "email": "dev@isl.co",
     "description": "A short description of the project.",
     "domain_name": "example.isl.codes",
     "version": "0.1.0",
+    "license": "MIT",
     "timezone": "UTC",
     "use_postgres": "n",
     "use_redis": "n",
