@@ -4,8 +4,12 @@
   "description": "{{cookiecutter.project_name}} - {{cookiecutter.description}}",
   "main": "app/index.js",
   "scripts": {
-    "test": "node test/test.js",
+    "test": "tape test/**/test-*.js",
+    {% if cookiecutter.pretty_logs == 'n' -%}
     "start": "node app/index.js"
+    {%- else %}
+    "start": "node app/index.js | bunyan"
+    {%- endif %}
   },
   "repository": {
     "type": "git",
@@ -35,7 +39,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "npm": "^{{cookiecutter.npm_version}}",
-    "node": "^{{cookiecutter.node_version}}"
+    "npm": ">={{cookiecutter.npm_version}}",
+    "node": ">={{cookiecutter.node_version}}"
   }
 }

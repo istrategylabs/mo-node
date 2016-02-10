@@ -1,0 +1,33 @@
+
+{
+  "name": "{{ cookiecutter.repo_name }}",
+  "env":{
+    {% if cookiecutter.use_express == 'y' -%}
+    "PORT":{
+      "description": "The port for the server",
+      "value": 3000
+    },
+    {%- endif %}
+    {% if cookiecutter.use_postgres == 'y' -%}
+    "DATABASE_URL":{
+      "description": "Location of the database"
+    },
+    {%- endif %}
+    "SECRET_KEY": {
+      "generator": "secret"
+    }
+  },
+  "addons":[
+  {% if cookiecutter.use_postgres == 'y' -%}
+    "heroku-postgresql:hobby-dev"
+  {%- endif %}
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    }
+  ]
+}
