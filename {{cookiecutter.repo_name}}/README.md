@@ -8,15 +8,15 @@
 
 You are almost ready to run this barebones application, so let's make it happen.
 
-* Copy *env.example* to *.env*
-* Edit *.env* to set a valid DATABASE_URL
-
-
 * Run `npm install` to install the default project dependencies
+
+If you choose the database option
 * Run `createdatabase {{cookiecutter.package_name}}` to create the database
 * Run `createuser {{cookiecutter.package_name}}` to create the database user
-* Start your app by running `foreman start`
-* Visit [http://localhost:3000](http://localhost:3000) and you should see an inspiring message, which indicates that your app is running.
+* Edit .env to set a valid DATABASE_URL
+
+* Start your app by running `heroku local`
+* Visit [http://localhost:port](http://localhost:3000) and you should see an inspiring message, which indicates that your app is running.
 
 **Finally, take this whole section out of README and write one specific to your project. Be a good citizen.**
 
