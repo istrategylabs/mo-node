@@ -12,7 +12,7 @@
     "use_postgres": "n",
     "use_redis": "n",
     "use_express": "n",
-    "need_npm_token": "y",
+    "use_npm_token": "y",
     "render_views": "n",
     "pretty_logs": "y",
     "node_version": "4.2.1",
