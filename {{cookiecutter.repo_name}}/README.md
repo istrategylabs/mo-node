@@ -8,6 +8,10 @@
 
 You are almost ready to run this barebones application, so let's make it happen.
 
+* Install heroku toolbelt https://toolbelt.heroku.com/
+* Install [node version manager (nvm)](https://github.com/creationix/nvm)
+* Run `nvm install` to get the required version of node
+* Run `nvm use` to start using the required version of node
 * Run `npm install` to install the default project dependencies
 
 If you choose the database option
