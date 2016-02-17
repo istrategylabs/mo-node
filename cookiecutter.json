@@ -15,6 +15,5 @@
     "use_npm_token": "y",
     "render_views": "n",
     "pretty_logs": "y",
-    "node_version": "4.2.1",
-    "npm_version": "3.3.3"
+    "node_version": "4.3.1"
 }

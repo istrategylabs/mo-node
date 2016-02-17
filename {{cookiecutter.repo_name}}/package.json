@@ -39,7 +39,6 @@
   },
   "engineStrict": true,
   "engines": {
-    "npm": ">={{cookiecutter.npm_version}}",
     "node": ">={{cookiecutter.node_version}}"
   }
 }
