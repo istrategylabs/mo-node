@@ -12,5 +12,5 @@
     "use_express": "n",
     "use_npm_token": "y",
     "render_views": "n",
-    "pretty_logs": "y",
+    "pretty_logs": "y"
 }

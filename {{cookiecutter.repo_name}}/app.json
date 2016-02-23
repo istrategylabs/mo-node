@@ -12,11 +12,11 @@
     "DATABASE_URL":{
       "description": "Location of the database"
     },
+    {%- endif %}
     {% if cookiecutter.use_npm_token == 'y' -%}
     "NPM_TOKEN":{
       "description": "The token which will allow you to install private modules published by the token owner"
     },
-    {%- endif %}
     {%- endif %}
   },
   "addons":[
