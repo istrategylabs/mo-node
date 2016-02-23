@@ -28,6 +28,10 @@ app.set('secret', process.env.SECRET);
 const hosts = process.env.ALLOWED_HOSTS
   .split(',')
   .map((host) => host.trim());
+
+if (hosts.length === 0) {
+  hosts.push(`localhost:${process.env.PORT}`);
+}
 log.info(`Allowed hosts: ${hosts}`);
 
 

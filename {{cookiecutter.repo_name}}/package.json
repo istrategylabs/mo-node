@@ -39,6 +39,6 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": ">={{cookiecutter.node_version}}"
+    "node": "4.3.1"
   }
 }

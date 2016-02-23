@@ -18,18 +18,10 @@
     },
     {%- endif %}
     {%- endif %}
-    "SECRET_KEY": {
-      "generator": "secret"
-    }
   },
   "addons":[
   {% if cookiecutter.use_postgres == 'y' -%}
     "heroku-postgresql:hobby-dev"
   {%- endif %}
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
-    }
   ]
 }
