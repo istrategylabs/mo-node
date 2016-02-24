@@ -4,17 +4,13 @@
     "github_username": "istrategylabs",
     "author_name": "ISL",
     "email": "dev@isl.co",
-    "description": "A short description of the project.",
-    "domain_name": "example.isl.codes",
+    "description": "",
     "version": "0.1.0",
     "license": "MIT",
-    "timezone": "UTC",
     "use_postgres": "n",
     "use_redis": "n",
     "use_express": "n",
     "use_npm_token": "y",
     "render_views": "n",
-    "pretty_logs": "y",
-    "node_version": "4.2.1",
-    "npm_version": "3.3.3"
+    "pretty_logs": "y"
 }

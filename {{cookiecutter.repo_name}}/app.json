@@ -12,24 +12,16 @@
     "DATABASE_URL":{
       "description": "Location of the database"
     },
+    {%- endif %}
     {% if cookiecutter.use_npm_token == 'y' -%}
     "NPM_TOKEN":{
       "description": "The token which will allow you to install private modules published by the token owner"
     },
     {%- endif %}
-    {%- endif %}
-    "SECRET_KEY": {
-      "generator": "secret"
-    }
   },
   "addons":[
   {% if cookiecutter.use_postgres == 'y' -%}
     "heroku-postgresql:hobby-dev"
   {%- endif %}
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
-    }
   ]
 }
