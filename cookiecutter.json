@@ -7,10 +7,9 @@
     "description": "",
     "version": "0.1.0",
     "license": "MIT",
-    "use_postgres": "n",
-    "use_redis": "n",
     "use_express": "n",
-    "use_npm_token": "y",
-    "render_views": "n",
-    "pretty_logs": "y"
+    "use_postgres": "n",
+    "use_redis": "y",
+    "use_npm_token": "n",
+    "render_views": "n"
 }

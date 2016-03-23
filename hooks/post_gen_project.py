@@ -1,8 +1,13 @@
 
 import subprocess
+import shutil
 import os
 
 need_npm_token = False
+
+{% if cookiecutter.use_express == 'n' -%}
+shutil.rmtree("app/routes")
+{%- endif %}
 
 {% if cookiecutter.use_npm_token == 'y' -%}
 npm_token = os.environ.get("NPM_TOKEN")

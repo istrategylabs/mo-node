@@ -1,8 +1,11 @@
 
 'use strict';
 
+const cuid = require('cuid');
 {% if cookiecutter.use_express == 'y' -%}
 const express = require('express');
+const session = require('express-session');
+const routes = require('./routes');
 const bodyParser = require('body-parser');
 {% if cookiecutter.render_views == 'y' -%}
 const nunjucks = require('nunjucks');
@@ -23,17 +26,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'html');
 app.set('view cache', false);
 {%- endif %}
+
 app.set('secret', process.env.SECRET);
 
-const hosts = process.env.ALLOWED_HOSTS
+let hosts = process.env.ALLOWED_HOSTS || `http://localhost:${process.env.PORT}`;
+hosts = hosts
   .split(',')
   .map((host) => host.trim());
 
 if (hosts.length === 0) {
   hosts.push(`localhost:${process.env.PORT}`);
 }
-log.info(`Allowed hosts: ${hosts}`);
 
+log.info(`Allowed hosts: ${hosts}`);
 
 const allowCrossDomain = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', hosts);
@@ -42,9 +47,7 @@ const allowCrossDomain = (req, res, next) => {
 
 app.use(allowCrossDomain);
 
-app.get('/', (req, res) => {
-  res.send('I believe in you!');
-});
+routes(express, app);
 
 const server = app.listen(process.env.PORT, () => {
   const host = server.address().address;
