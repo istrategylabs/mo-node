@@ -3,6 +3,7 @@
 
 const cuid = require('cuid');
 {% if cookiecutter.use_express == 'y' -%}
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const routes = require('./routes');
@@ -25,6 +26,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 {% if cookiecutter.render_views == 'y' -%}
 app.set('view engine', 'html');
 app.set('view cache', false);
+app.set('renderer', nunjucks.render);
+app.engine('html', nunjucks.render);
+app.use(express.static(path.join(__dirname, '../public')));
+
+const opts = {
+  noCache: true
+};
+
+const searchPaths = [path.join(__dirname, '../src/templates/')];
+const loader = new nunjucks.FileSystemLoader(searchPaths, opts);
+const env = new nunjucks.Environment(loader);
+
+env.express(app);
 {%- endif %}
 
 app.set('secret', process.env.SECRET);

@@ -9,6 +9,12 @@ need_npm_token = False
 shutil.rmtree("app/routes")
 {%- endif %}
 
+{% if cookiecutter.render_views == 'n' -%}
+shutil.rmtree("src/")
+shutil.rmtree("gulpfile.js")
+shutil.rmtree("banner.txt")
+{%- endif %}
+
 {% if cookiecutter.use_npm_token == 'y' -%}
 npm_token = os.environ.get("NPM_TOKEN")
 need_npm_token = True
@@ -42,6 +48,9 @@ print "   3) Install Node Version Manager (nvm) https://github.com/creationix/nv
 print "   4) Run `nvm install` to get the required version of node"
 print "   5) Run `nvm use` to start using the required version of node"
 print "   6) Run `npm install` to install the default project dependencies"
+{% if cookiecutter.render_views -%}
+print "     6a) Run `npm build` to build the front end assets"
+{%- endif %}
 print "   7) If you have a database:"
 print "     7a) Run `createdatabase {{cookiecutter.package_name}}` to create the database"
 print "     7b) Run `createuser {{cookiecutter.package_name}}` to create the database user"
