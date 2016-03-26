@@ -11,8 +11,12 @@ shutil.rmtree("app/routes")
 
 {% if cookiecutter.render_views == 'n' -%}
 shutil.rmtree("src/")
-shutil.rmtree("gulpfile.js")
-shutil.rmtree("banner.txt")
+os.remove("gulpfile.js")
+os.remove("banner.txt")
+{%- endif %}
+
+{% if cookiecutter.use_redis == 'n' -%}
+os.remove("app/resources/redisClient.js")
 {%- endif %}
 
 {% if cookiecutter.use_npm_token == 'y' -%}
@@ -56,6 +60,6 @@ print "     7a) Run `createdatabase {{cookiecutter.package_name}}` to create the
 print "     7b) Run `createuser {{cookiecutter.package_name}}` to create the database user"
 if need_npm_token is True:
     print "   8) export NPM_TOKEN=a_real_npm_token_for_private_modules"
-    print "   9) Run `heroku local`\n\n"
+    print "   9) Run `heroku local -f Procfile.dev`\n\n"
 else:
-    print "   8) Run `heroku local`\n\n"
+    print "   8) Run `heroku local -f Procfile.dev`\n\n"

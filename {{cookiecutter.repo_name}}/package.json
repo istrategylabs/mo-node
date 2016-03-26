@@ -20,6 +20,7 @@
   "license": "{{cookiecutter.license}}",
   "dependencies": {
     "cuid": "^1.2.5",
+    "bluebird": "^3.3.4",
     "bunyan": "^1.5.1"
     {% if cookiecutter.use_redis == 'y' -%}
     ,"redis": "^2.3.0"

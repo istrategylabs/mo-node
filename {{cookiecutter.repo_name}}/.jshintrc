@@ -6,6 +6,7 @@
   "camelcase": true,
   "curly": true,
   "forin": true,
+  "esversion": 6,
   "immed": true,
   "latedef": "nofunc",
   "maxlen": 80,

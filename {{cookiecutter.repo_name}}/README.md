@@ -21,7 +21,7 @@ If you choose the database option
 * Edit .env to set a valid DATABASE_URL
 
 * Start your app in dev (watch) mode by running `heroku local -f Procfile.dev`
-* Visit [http://localhost:port](http://localhost:3008) and you should see an inspiring message, which indicates that your app is running.
+* Visit [http://localhost:3008](http://localhost:3008) and you should see an inspiring message, which indicates that your app is running.
 
 **Finally, take this whole section out of README and write one specific to your project. Be a good citizen.**
 

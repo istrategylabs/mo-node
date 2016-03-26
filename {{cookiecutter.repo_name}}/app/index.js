@@ -1,7 +1,6 @@
 
 'use strict';
 
-const cuid = require('cuid');
 {% if cookiecutter.use_express == 'y' -%}
 const path = require('path');
 const express = require('express');
@@ -11,6 +10,7 @@ const bodyParser = require('body-parser');
 {% if cookiecutter.render_views == 'y' -%}
 const nunjucks = require('nunjucks');
 {%- endif %}
+const resources = require('./resources');
 const app = express();
 const log = require('./log')();
 
@@ -61,15 +61,28 @@ const allowCrossDomain = (req, res, next) => {
 
 app.use(allowCrossDomain);
 
-routes(express, app);
+resources.init()
+  .then(() => {
+    log.info('Resources setup');
+    routes(express, app);
+    listen();
+  });
 
-const server = app.listen(process.env.PORT, () => {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log('App listening at http://%s:%s', host, port);
-});
+function listen() {
+  const server = app.listen(process.env.PORT, () => {
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log('App listening at http://%s:%s', host, port);
+  });
+}
 {%- else %}
 const log = require('./log')();
-log.info('\n     I believe in you!\n');
+const resources = require('./resources');
+
+resources.init()
+  .then(() => {
+    log.info('Resources setup');
+    log.info('\n     I believe in you!\n');
+  });
 {%- endif %}
 

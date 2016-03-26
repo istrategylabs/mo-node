@@ -9,7 +9,7 @@
     "license": "MIT",
     "use_express": "n",
     "use_postgres": "n",
-    "use_redis": "y",
+    "use_redis": "n",
     "use_npm_token": "n",
     "render_views": "n"
 }
