@@ -72,7 +72,10 @@ function listen() {
   const server = app.listen(process.env.PORT, () => {
     const host = server.address().address;
     const port = server.address().port;
-    console.log('App listening at http://%s:%s', host, port);
+    log.info('\n');
+    log.info('------------------------------------------------------------');
+    log.info(`{{ cookiecutter.package_name }} is listening.`);
+    log.info('------------------------------------------------------------');
   });
 }
 {%- else %}

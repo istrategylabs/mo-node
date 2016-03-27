@@ -13,8 +13,8 @@ const redisClient = require('./redisClient');
 * 1) init()
 * Initializes the underlying resource client and resolves the resource module
 *
-* 2) instnace()
-* Returns the current client via a promise resolution
+* 2) getInstnace()
+* Returns the current client
 *
 * 3) cleanup()
 * Cleans up a resource's connections etc
@@ -23,24 +23,24 @@ const redisClient = require('./redisClient');
 
 
 exports.init = () => {
-  const resolver = P.pending();
-  P.map([
-    {% if cookiecutter.use_redis == 'y' -%}
-    redisClient
-    {%- endif %}
-  ], (resource) => resource.init())
+  return new P((resolve, reject) => {
+    P.map([
+      {% if cookiecutter.use_redis == 'y' -%}
+      redisClient
+      {%- endif %}
+    ], (resource) => resource.init())
 
-  .then((resources) => {
-    process
-      .on('SIGTERM', () => {
-        P.each(resources, (r) => r.cleanup())
-      })
-      .on('SIGINT', () => {
-        P.each(resources, (r) => r.cleanup())
-      })
-    resolver.resolve();
+    .then((resources) => {
+      process
+        .on('SIGTERM', () => {
+          P.each(resources, (r) => r.cleanup())
+        })
+        .on('SIGINT', () => {
+          P.each(resources, (r) => r.cleanup())
+        })
+      resolve();
+    });
   });
-  return resolver.promise;
 };
 
 

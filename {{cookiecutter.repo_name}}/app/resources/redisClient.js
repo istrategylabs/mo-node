@@ -14,27 +14,26 @@ let instance;
  */
 exports.init = () => {
   log.debug('Initializing the redis resource');
-  const resolver = P.pending();
-  if (instance) {
-    instance.quit();
-  }
-  instance = redis.createClient(process.env.REDIS_URL);
-  process.nextTick(() => resolver.resolve(exports));
-  return resolver.promise;
+  return new P((resolve, reject) => {
+    if (instance) {
+      instance.quit();
+    }
+    instance = redis.createClient(process.env.REDIS_URL);
+    process.nextTick(() => resolve(exports));
+  });
 };
 
 /**
- * Returns the existing redis client. If it does not exist, it will be created
+ * Returns the existing redis client.
  *
- * @return {Promise} Resolves a redis client instance
+ * @return {Object} Redis cient instance
  */
-exports.instance = () => {
-  const resolver = P.pending();
+exports.getInstance = () => {
   if (!instance) {
-    instance = redis.createClient(process.env.REDIS_URL);
+    throw Error('The redis resource has not yet been initialized');
+  } else {
+    return instance;
   }
-  process.nextTick(() => resolver.resolve(instance));
-  return resolver.promise;
 };
 
 /**
@@ -43,12 +42,12 @@ exports.instance = () => {
  * @return {Promsie}
  */
 exports.cleanup = () => {
-  log.info('Cleaning up redis client');ß
-  const resolver = P.pending();
-  if (instance) {
-    instance.quit();
-    instance = null;
-  }
-  process.nextTick(() => resolver.resolve());
-  return resolver.promise;
+  log.info('Cleaning up redis client');
+  return new P((resolve, reject) => {
+    if (instance) {
+      instance.quit();
+      instance = null;
+    }
+    process.nextTick(() => resolve());
+  });
 };
