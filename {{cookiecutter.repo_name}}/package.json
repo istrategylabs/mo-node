@@ -35,8 +35,8 @@
     "foundation-sites": "6.2.0"
     {%- endif %}
     {% if cookiecutter.use_postgres == 'y' -%}
-    ,"pg": "^4.4.3",
-    "knex": "^0.9.0"
+    ,"pg": "^4.5.2",
+    "knex": "^0.10.0"
     {%- endif %}
     {% if cookiecutter.render_views == 'y' -%}
     ,"autoprefixer": "6.1.0",

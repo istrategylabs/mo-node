@@ -19,6 +19,10 @@ os.remove("banner.txt")
 os.remove("app/resources/redisClient.js")
 {%- endif %}
 
+{% if cookiecutter.use_postgres == 'n' -%}
+os.remove("app/resources/dbClient.js")
+{%- endif %}
+
 {% if cookiecutter.use_npm_token == 'y' -%}
 npm_token = os.environ.get("NPM_TOKEN")
 need_npm_token = True
