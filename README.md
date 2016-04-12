@@ -8,6 +8,7 @@ A [cookiecutter](https://github.com/audreyr/cookiecutter) template for ISL Node 
 * [cuid](https://github.com/ericelliott/cuid)
 * [tape](https://github.com/substack/tape)
 * [nodemon](https://github.com/remy/nodemon)
+* [ES2015](http://www.ecma-international.org/ecma-262/6.0/index.html) support via [Babel](https://babeljs.io)
 
 ## Optional Packages
 
