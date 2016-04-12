@@ -1,9 +1,9 @@
 
-'use strict';
+'use strict'
 
-const P = require('bluebird');
+import P from 'bluebird'
 {% if cookiecutter.use_redis == 'y' -%}
-const redisClient = require('./redisClient');
+import * as redisClient from './redisClient'
 {%- endif %}
 
 /*
@@ -22,8 +22,8 @@ const redisClient = require('./redisClient');
 * */
 
 
-exports.init = () => {
-  return new P((resolve, reject) => {
+export function init() {
+  return new P((resolve) => {
     P.map([
       {% if cookiecutter.use_redis == 'y' -%}
       redisClient
@@ -38,9 +38,9 @@ exports.init = () => {
         .on('SIGINT', () => {
           P.each(resources, (r) => r.cleanup())
         })
-      resolve();
-    });
-  });
-};
+      resolve()
+    })
+  })
+}
 
 
