@@ -5,6 +5,9 @@ import P from 'bluebird'
 {% if cookiecutter.use_redis == 'y' -%}
 import * as redisClient from './redisClient'
 {%- endif %}
+{% if cookiecutter.use_postgres == 'y' -%}
+import * as dbClient from './dbClient'
+{%- endif %}
 
 /*
 * Each resource in this directory is treated as a singleton and
@@ -27,6 +30,9 @@ export function init() {
     P.map([
       {% if cookiecutter.use_redis == 'y' -%}
       redisClient
+      {%- endif %}
+      {% if cookiecutter.use_postgres == 'y' -%}
+      ,dbClient
       {%- endif %}
     ], (resource) => resource.init())
 
