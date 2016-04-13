@@ -48,6 +48,7 @@ with open(".npmrc", "w") as text_file:
 {% endraw %}
 {%- endif %}
 subprocess.call(["cp", "env.example", ".env"])
+os.remove("env.example")
 
 print "\n   ************************* Almost done! **************************"
 print "   1) Install heroku toolbelt https://toolbelt.heroku.com/"

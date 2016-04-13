@@ -1,10 +1,11 @@
 
-'use strict';
+'use strict'
 
-const P = require('bluebird');
-const Knex = require('knex');
-const log = require('../log')();
-let instance;
+import P from 'bluebird'
+import Knex from 'knex'
+import Logger from '../log'
+const log = Logger()
+let instance
 
 /**
  * Initializes the knex client. If the client has already been initialized,
@@ -12,19 +13,19 @@ let instance;
  *
  * @return {Promise} Resolves the current module
  */
-exports.init = () => {
-  log.debug('Initializing the database resource');
-  return new P((resolve, reject) => {
+export function init() {
+  log.debug('Initializing the database resource')
+  return new P((resolve) => {
     if (instance) {
       instance.destroy(() => {
-        instance = doInit();
-        resolve(exports);
-      });
+        instance = doInit()
+        resolve(exports)
+      })
     } else {
-      instance = doInit();
-      process.nextTick(() => resolve(exports));
+      instance = doInit()
+      process.nextTick(() => resolve(exports))
     }
-  });
+  })
 
   function doInit() {
     return Knex({
@@ -34,38 +35,38 @@ exports.init = () => {
         min: 0,
         max: process.env.DB_POOL || 10
       }
-    });
+    })
   }
-};
+}
 
 /**
  * Returns the existing knex client.
  *
  * @return {Object} knex cient instance
  */
-exports.getInstance = () => {
+export function getInstance() {
   if (!instance) {
-    throw Error('The database resource has not been initialized');
+    throw Error('The database resource has not been initialized')
   } else {
-    return instance;
+    return instance
   }
-};
+}
 
 /**
  * Destroys the redis client
  *
  * @return {Promsie}
  */
-exports.cleanup = () => {
-  log.info('Cleaning up database client');
-  return new P((resolve, reject) => {
+export function cleanup() {
+  log.info('Cleaning up database client')
+  return new P((resolve) => {
     if (instance) {
       instance.destroy(() => {
-        instance = null;
-        resolve();
-      });
+        instance = null
+        resolve()
+      })
     } else {
-      process.nextTick(() => resolve());
+      process.nextTick(() => resolve())
     }
-  });
-};
+  })
+}

@@ -1,20 +1,20 @@
-'use strict';
+'use strict'
 
-module.exports = (express, app) => {
+export default function(express, app) {
 
-  const mainRouter = express.Router();
+  const mainRouter = express.Router()
 
   mainRouter
 
     .get('/', (req, res) => {
       {% if cookiecutter.render_views == 'n' -%}
-      res.send({ message: 'hello, world' });
+      res.send({ message: 'hello, world' })
       {%- endif %}
       {% if cookiecutter.render_views == 'y' -%}
-      res.render('index.html');
+      res.render('index.html')
       {%- endif %}
-    });
+    })
 
-  app.use('/', mainRouter);
+  app.use('/', mainRouter)
 
-};
+}

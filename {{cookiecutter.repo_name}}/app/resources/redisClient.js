@@ -1,10 +1,11 @@
 
-'use strict';
+'use strict'
 
-const P = require('bluebird');
-const redis = require('redis');
-const log = require('../log')();
-let instance;
+import P from 'bluebird'
+import redis from 'redis'
+import Logger from '../log'
+const log = Logger()
+let instance
 
 /**
  * Initializes the redis client. If the client has already been initialized,
@@ -12,42 +13,42 @@ let instance;
  *
  * @return {Promise} Resolves the current module
  */
-exports.init = () => {
-  log.debug('Initializing the redis resource');
-  return new P((resolve, reject) => {
+export function init() {
+  log.debug('Initializing the redis resource')
+  return new P((resolve) => {
     if (instance) {
-      instance.quit();
+      instance.quit()
     }
-    instance = redis.createClient(process.env.REDIS_URL);
-    process.nextTick(() => resolve(exports));
-  });
-};
+    instance = redis.createClient(process.env.REDIS_URL)
+    process.nextTick(() => resolve(exports))
+  })
+}
 
 /**
  * Returns the existing redis client.
  *
  * @return {Object} Redis cient instance
  */
-exports.getInstance = () => {
+export function getInstance() {
   if (!instance) {
-    throw Error('The redis resource has not yet been initialized');
+    throw Error('The redis resource has not yet been initialized')
   } else {
-    return instance;
+    return instance
   }
-};
+}
 
 /**
  * Destroys the redis client
  *
  * @return {Promsie}
  */
-exports.cleanup = () => {
-  log.info('Cleaning up redis client');
-  return new P((resolve, reject) => {
+export function cleanup() {
+  log.info('Cleaning up redis client')
+  return new P((resolve) => {
     if (instance) {
-      instance.quit();
-      instance = null;
+      instance.quit()
+      instance = null
     }
-    process.nextTick(() => resolve());
-  });
-};
+    process.nextTick(() => resolve())
+  })
+}

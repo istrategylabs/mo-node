@@ -1,15 +1,15 @@
 
-'use strict';
+'use strict'
 
-const bunyan = require('bunyan');
-let instance;
+import bunyan from 'bunyan'
+let instance
 
-module.exports = () => {
+export default () => {
   if (!instance) {
     instance = bunyan.createLogger({
       name: '{{cookiecutter.package_name}}',
       level: (process.env.NODE_ENV === 'production') ? 'INFO': 'DEBUG'
-    });
+    })
   }
-  return instance;
+  return instance
 };
