@@ -13,5 +13,5 @@ insert_final_newline = true
 indent_size = 4
 
 # Tab indentation (no size specified)
-[*.js,*.yml]
+[*.{js,yml}]
 indent_size = 2
