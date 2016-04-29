@@ -1,6 +1,6 @@
 'use strict'
 
-import $ from 'jQuery'
+import $ from 'jquery'
 import 'foundation-sites'
 
 $(document).foundation()

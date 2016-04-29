@@ -86,7 +86,8 @@ gulp.task('extras', () => {
 gulp.task('watch', ['sass', 'extras', 'watchify'], () => {
   browserSync.init({
     server: 'public',
-    files: 'public/**/*'
+    files: 'public/**/*',
+    open: false
   });
 
   gulp.watch('src/scss/**/*.scss', ['sass']);
